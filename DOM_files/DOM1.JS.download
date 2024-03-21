@@ -1,0 +1,15 @@
+let id = document.getElementById("a1");
+console.log(id)
+
+
+let cls = document.getElementsByClassName("c1");
+console.log(cls)
+
+let para = document.getElementsByTagName("p");
+console.dir(para)
+
+let firEle = document.querySelector("p");
+console.dir(firEle);
+
+let allEle = document.querySelectorAll("p");
+console.dir(allEle);

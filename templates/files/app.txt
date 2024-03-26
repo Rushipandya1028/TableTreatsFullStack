@@ -1,0 +1,39 @@
+from flask import Flask, render_template, send_from_directory
+import qrcode
+import os
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/menu/<table_number>')
+def menu(table_number):
+    return render_template('menu.html', table_number=table_number)
+
+@app.route('/generate_qr/<table_number>')
+def generate_qr(table_number):
+    try:
+        # Generate QR code for the menu page specific to the table
+        qr = qrcode.QRCode(
+            version=1,
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            box_size=10,
+            border=4,
+        )
+        menu_url = f'http://127.0.0.1:5000/menu/{table_number}' 
+        qr.add_data(menu_url)
+        qr.make(fit=True)
+
+        img = qr.make_image(fill_color="black", back_color="white")
+        img_path = os.path.join('static', 'qrcodes', f'table_{table_number}.png')
+        img.save(img_path)
+
+        return send_from_directory('static/qrcodes', f'table_{table_number}.png')
+    except Exception as e:
+        print(f"Exception: {e}")
+        return str(e)
+
+if __name__ == '__main__':
+    app.run(debug=True)

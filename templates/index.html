@@ -1,62 +1,17 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Display All Data</title> 
-</head> 
-<body> 
-    <h1>All Data from MongoDB</h1> 
- 
-    <!-- Add a form for day and time selection --> 
-    <form action="/" method="post"> 
-        <label for="day">Select Day:</label> 
-        <select name="day" id="day"> 
-            {% set unique_days = [] %} 
-            {% for data in all_data %} 
-                {% if data.Day not in unique_days %} 
-                    <option value="{{ data.Day }}">{{ data.Day }}</option> 
-                    {% set _ = unique_days.append(data.Day) %} 
-                {% endif %} 
-            {% endfor %} 
-        </select> 
- 
-        <label for="time">Select Time:</label> 
-        <select name="time" id="time"> 
-            {% set unique_times = [] %} 
-            {% for data in all_data %} 
-                {% if data.StartTime not in unique_times %} 
-                    <option value="{{ data.StartTime }}">{{ data.StartTime }}</option> 
-                    {% set _ = unique_times.append(data.StartTime) %} 
-                {% endif %} 
-            {% endfor %} 
-        </select> 
- 
-        <button type="submit">Get Lecture</button> 
-    </form> 
- 
-    <!-- Display selected lecture --> 
-    {% if selected_lecture %} 
-        <h2>Selected Lecture</h2> 
-        <p><strong>Day:</strong> {{ selected_lecture.Day }} - <strong>Time:</strong> {{ selected_lecture.StartTime }} - <strong>Lecture:</strong> {{ selected_lecture.Lecture }}</p> 
-    {% endif %} 
- 
-    <ul> 
-        {% for data in all_data %} 
-            <li> 
-                {% if data.Day %} 
-                    <strong>Day:</strong> {{ data.Day }} - 
-                {% endif %} 
- 
-                {% if data.StartTime %} 
-                    <strong>Time:</strong> {{ data.StartTime }} - 
-                {% endif %} 
- 
-                {% if data.Lecture %} 
-                    <strong>Lecture:</strong> {{ data.Lecture }} - 
-                {% endif %} 
-            </li> 
-        {% endfor %} 
-    </ul> 
-</body> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table QR Code Generator</title>
+</head>
+<body>
+    <h1>Welcome to Our Restaurant</h1>
+    <p>Choose a table to generate the QR code for the menu:</p>
+    <ul>
+        <li><a href="{{ url_for('generate_qr', table_number='1') }}">Table 1</a></li>
+        <li><a href="{{ url_for('generate_qr', table_number='2') }}">Table 2</a></li>
+        <!-- Add more links for other tables as needed -->
+    </ul>
+</body>
 </html>

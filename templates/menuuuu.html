@@ -1,0 +1,65 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Menu - Table {{ table_number }}</title> 
+    <style> 
+        body { 
+            font-family: 'Arial', sans-serif; 
+            background-color: #f5f5f5; 
+            color: #333; 
+            margin: 20px; 
+        } 
+        h1 { 
+            color: #cc0000; 
+        } 
+        .menu-item { 
+            border: 1px solid #ccc; 
+            padding: 10px; 
+            margin: 10px 0; 
+            background-color: #fff; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+            border-radius: 5px; 
+        } 
+        .order-form { 
+            margin-top: 20px; 
+            padding: 10px; 
+            background-color: #fff; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+            border-radius: 5px; 
+        } 
+    </style> 
+</head> 
+<body> 
+    <h1>Menu for Table {{ table_number }}</h1> 
+     
+    <div class="menu-item"> 
+        <h2>Appetizers</h2> 
+        <ul> 
+            {% for item in menu_items %} 
+                <li> 
+                    <input type="checkbox" name="order[]" value="{{ item }}"> {{ item }} 
+                </li> 
+            {% endfor %} 
+        </ul> 
+    </div> 
+ 
+    <div class="order-form"> 
+        <h2>Order Form</h2> 
+        <form action="/menu/{{ table_number }}" method="post"> 
+            <label for="table_number">Table Number:</label> 
+            <input type="text" name="table_number" value="{{ table_number }}" readonly> 
+            <br> 
+            <label>Select items to order:</label> 
+            <br> 
+            {% for item in menu_items %} 
+                <input type="checkbox" name="order[]" value="{{ item }}"> {{ item }}<br> 
+            {% endfor %} 
+            <br> 
+            <input type="submit" value="Submit Order"> 
+        </form> 
+    </div> 
+ 
+</body> 
+</html>

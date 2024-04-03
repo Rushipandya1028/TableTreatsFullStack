@@ -5,8 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover">
     <title>Food Website</title>
-    <link rel="stylesheet" href="/static/css/about.css">
+    <link rel="stylesheet" href="/static/css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-top: 50px;
+        }
+        
+        /* Style the subheading */
+        h2 {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        /* Style the paragraph text */
+        p {
+            font-size: 18px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+        
+        /* Style the list items */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        
+        li {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .service1{
+            font-size: 40px;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
 
@@ -14,16 +52,14 @@
     <div class="container" id="container">
         <div id="menu">
             <div class="title">
-                <img src="Screenshot 2024-02-01 114207.png" alt="">
+                <img src="/static/images/Screenshot 2024-02-01 114207.png" alt="">
             </div>
             <div class="menu-item">
-                <a href="index.html">Home</a>
-                <a href="services.html">Services</a>
-                <a href="">Your Orders</a>
-                <a href="#">Wishlists</a>
-                <a href="#">Cart</a>
-                <a href="#">Contact</a>
-                <a href="about.html">About</a>
+                <a href="{{ url_for('menu', table_number=table_number) }}">Home</a>
+                <a href="{{ url_for('services', table_number=table_number) }}">Services</a>
+                <a href="{{ url_for('contact', table_number=table_number) }}">Contact</a>
+                <a href="{{ url_for('about', table_number=table_number) }}">About</a>
+                <a href="/logout">Logout</a>
             </div>
         </div>
 
@@ -34,20 +70,22 @@
                 </div>
                 <div class="util">
                     <i class="fa fa-search" id="search" >Search </i>
-                    
                     <i class="fa fa-cart-plus" id="cart-plus"> 0 Items</i>
                 </div>
             </div>
             <div id="food-items" class="d-food-items">
-                <h1>About</h1>
+                <div>
+                    <h2 class="service1">About Us</h2>
+                    <p class="service-item">Welcome to our restaurant! We are dedicated to providing our customers with delicious food and exceptional service. Here's a little bit about us:</p>
+                    <ul>
+                        <li class="service-item">We source the freshest ingredients for our dishes.</li>
+                        <li class="service-item">Our chefs are passionate about creating flavorful and innovative recipes.</li>
+                        <li class="service-item">We strive to create a welcoming and comfortable atmosphere for our guests.</li>
+                        <li class="service-item">Customer satisfaction is our top priority, and we're always here to listen to your feedback.</li>
+                    </ul>
+                </div>
             </div>
-
-        <h1>about</h1>
-        </div>
-
     </div>
-
-
     <!-- mobile view -->
     <div id="mobile-view" class="mobile-view">
         <div class="mobile-top">

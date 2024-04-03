@@ -4,13 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Table QR Code Generator</title>
+    <style>
+        /* Stylish CSS */
+
+        /* Change color of h1 */
+        h1 {
+            color: #ff5733; /* Deep orange color */
+            font-family: 'Arial Black', sans-serif; /* Use a bold font */
+            text-align: center; /* Center-align the heading */
+            text-transform: uppercase; /* Uppercase text */
+            letter-spacing: 2px; /* Add spacing between letters */
+        }
+
+        /* Change background color of body */
+        body {
+            background-color: #f0f0f0; /* Light grey background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use a clean sans-serif font */
+            line-height: 1.6; /* Improve readability with increased line height */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        /* Style links */
+        a {
+            color: #007bff; /* Blue color for links */
+            text-decoration: none; /* Remove default underline */
+            transition: color 0.3s; /* Smooth color transition on hover */
+        }
+
+        a:hover {
+            color: #0056b3; /* Darker blue color on hover */
+        }
+
+        /* Style list items */
+        li {
+            margin-bottom: 10px; /* Add some space between list items */
+        }
+
+        /* Add some shadow effect to the list */
+        ul {
+            list-style-type: none; /* Remove default list style */
+            padding: 0; /* Remove default padding */
+            margin: 0; /* Remove default margin */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+            border-radius: 8px; /* Add border radius for a softer look */
+            background-color: #fff; /* White background */
+            padding: 20px; /* Add padding inside the list */
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Our Restaurant</h1>
+    <h1>Welcome to Table Treats</h1>
     <p>Choose a table to generate the QR code for the menu:</p>
     <ul>
         <li><a href="{{ url_for('generate_qr', table_number='1') }}">Table 1</a></li>
         <li><a href="{{ url_for('generate_qr', table_number='2') }}">Table 2</a></li>
+        <li><a href="{{ url_for('generate_qr', table_number='3') }}">Table 3</a></li>
         <!-- Add more links for other tables as needed -->
     </ul>
 </body>

@@ -1,0 +1,147 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #e0d8d8;
+    margin: 20px;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+
+/* Table styles */
+table {
+    width: 90%;
+    border-collapse: collapse;
+    background-color: #ead9d9;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-left: 80px;
+    box-shadow: #000000;
+    border: #000000 solid 2px;
+
+}
+
+table th,
+table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #000000;
+    border: #000000 solid 2px;
+}
+
+table th {
+    background-color: #f2f2f2;
+    border: #000000 solid 2px;
+    font-size: 25px;
+}
+
+/* Table responsive styles */
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    table thead,
+    table tbody,
+    table tr,
+    table th,
+    table td {
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+
+/* Table row hover effect */
+tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* Alert styles */
+.alert {
+    padding: 15px;
+    background-color: #f44336;
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+/* Hide the alert initially */
+.alert-hidden {
+    display: none;
+}
+
+/* Admin dashboard styles */
+.admin-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add shadow here */
+}
+
+
+.admin-heading {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.admin-table-container {
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-table th {
+    background-color: #f2f2f2;
+}
+
+.admin-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.admin-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.admin-actions a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.admin-actions a:hover {
+    background-color: #45a049;
+}

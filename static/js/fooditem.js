@@ -397,4 +397,4 @@ const foodItem = [
     }
 ];
 
-export {foodItem};
+export { foodItem };

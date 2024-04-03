@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <script>
+        var newOrderReceived = false; // Flag to track if a new order has been received
+
+        // Function to check for new orders and display alert
+        function checkForNewOrders() {
+            // Send a request to the server to check for new orders
+            fetch('/check_new_orders')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.new_order && !newOrderReceived) {
+                        // If a new order is received and it's the first time, display an alert
+                        alert('New order received!');
+                        newOrderReceived = true; // Update flag
+                    }
+                })
+                .catch(error => console.error('Error checking for new orders:', error));
+        }
+
+        // Check for new orders periodically after the initial check (every 30 seconds)
+        setInterval(checkForNewOrders, 30000); // 30 seconds
+    </script>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Order Time</th> <!-- New column for Order Time -->
+                <th>Username</th>
+                <th>Order Details</th>
+                <th>Total</th>
+                <th>Table Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ order['order_time'] }}</td> <!-- Display Order Time -->
+                <td>{{ order['username'] }}</td>
+                <td>
+                    {% for item in order['order_details']['items'] %}
+                    {{ item['name'] }}( quantity * {{ item['quantity'] }})<br>
+                    {% endfor %}
+                </td>
+                <td>{{ order['order_details']['total'] }}</td>
+                <td>{{ order['table_number'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
